@@ -1,3 +1,24 @@
-<p>
-  currency-exchange works!
-</p>
+<form fxFlex
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutAlign.lt-md="center normal"
+      [formGroup]="exchangeForm"
+      class="u-padding-y-64 u-padding-x-24">
+  
+  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px" fxLayoutGap.lt-md="0"> 
+    <mat-form-field appearance="outline">
+      <mat-label>Dollars</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>attach_money</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Euros</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>euro_symbol</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary">CALCULATE</button>
+
+</form>

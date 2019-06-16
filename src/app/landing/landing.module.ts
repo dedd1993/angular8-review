@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { LandingRoutingModule } from './landing.routing.module';
 import { LandingComponent } from './landing.component';
-import { FooterComponent, HeaderComponent } from './layouts';
+import { FooterComponent, HeaderComponent, NavbarComponent } from './layouts';
 
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CurrencyExchangeComponent } from './currency-exchange/currency-exchange.component';
@@ -19,7 +19,8 @@ import { InsightsComponent } from './insights/insights.component';
     HomeComponent,
     InsightsComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,

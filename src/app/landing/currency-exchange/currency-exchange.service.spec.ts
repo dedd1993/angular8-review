@@ -1,12 +1,22 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController  } from '@angular/common/http/testing';
 
 import { CurrencyExchangeService } from './currency-exchange.service';
 
 describe('CurrencyExchangeService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let service: CurrencyExchangeService;
+  let httpTestingController: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
+
+    service = TestBed.get(CurrencyExchangeService);
+    httpTestingController = TestBed.get(HttpTestingController);
+  });
 
   it('should be created', () => {
-    const service: CurrencyExchangeService = TestBed.get(CurrencyExchangeService);
     expect(service).toBeTruthy();
   });
 });

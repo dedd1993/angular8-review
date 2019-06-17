@@ -6,11 +6,6 @@ import { NotFoundComponent } from './core/layouts/not-found/not-found.component'
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'landing',
-        pathMatch: 'full'
-    },
-    {
-        path: 'landing',
         loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule),
     },
     {

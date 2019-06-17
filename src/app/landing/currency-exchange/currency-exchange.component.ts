@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { CurrencyExchangeService } from './currency-exchange.service';
@@ -14,7 +15,10 @@ export class CurrencyExchangeComponent implements OnDestroy {
   exchangeLoading = false;
   private exchangeSuscription: Subscription;
 
-  constructor(private currencyExchangeService: CurrencyExchangeService) {
+  constructor(
+    private currencyExchangeService: CurrencyExchangeService,
+    private decimalPipe: DecimalPipe
+  ) {
     this.initFormBuilder();
   }
 
@@ -35,7 +39,7 @@ export class CurrencyExchangeComponent implements OnDestroy {
     this.exchangeSuscription = this.currencyExchangeService
       .getDollarEquivalent(amountToExchange)
       .subscribe(amount => {
-        const amountFixed = amount.toFixed(4);
+        const amountFixed = this.decimalPipe.transform(amount, '1.0-4');
         this.exchangeForm.get('dollarInput').setValue(amountFixed);
 
       }, error => {

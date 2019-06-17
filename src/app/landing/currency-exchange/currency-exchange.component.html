@@ -20,9 +20,13 @@
              matInput>
       
       <mat-icon matSuffix>euro_symbol</mat-icon>
-  
+      
+      <mat-error *ngIf="exchangeForm.controls['euroInput'].hasError('pattern')" class="form-control-feedback">
+        The field only allows a maximum of 4 decimals.
+      </mat-error>
+
       <mat-error *ngIf="exchangeForm.controls['euroInput'].hasError('required')" class="form-control-feedback">
-          This field is required
+        This field is required.
       </mat-error>
 
     </mat-form-field>
@@ -31,7 +35,8 @@
       <mat-label>Dollars</mat-label>
 
       <input formControlName="dollarInput"
-             type="number"
+             [value]="exchangeForm.get('dollarInput').value | number:'1.4-4'"
+             type="text"
              autocomplete="off"
              matInput>
 

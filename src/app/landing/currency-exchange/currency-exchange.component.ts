@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-currency-exchange',
@@ -17,12 +17,17 @@ export class CurrencyExchangeComponent implements OnInit {
 
   private setValuesFormBuilder() {
     this.exchangeForm = new FormGroup({
-      dollarInput: new FormControl({ value: '', disabled: false }, Validators.compose([
+      euroInput: new FormControl({ value: '', disabled: false }, Validators.compose([
         Validators.required,
         Validators.pattern(/^\d+\.?\d{0,4}$/)
       ])),
-      euroInput: new FormControl({ value: '', disabled: true })
+      dollarInput: new FormControl({ value: '', disabled: true })
     });
+  }
+
+  onCalculate(): void {
+    const amountToExchange = Number(this.exchangeForm.get('euroInput').value);
+    console.log('amountToExchange', amountToExchange);
   }
 
 }

@@ -3,22 +3,48 @@
       fxLayoutAlign="center center"
       fxLayoutAlign.lt-md="center normal"
       [formGroup]="exchangeForm"
+      (ngSubmit)="exchangeForm.valid && onCalculate()"
       class="u-padding-y-64 u-padding-x-24">
   
-  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px" fxLayoutGap.lt-md="0"> 
-    <mat-form-field appearance="outline">
-      <mat-label>Dollars</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>attach_money</mat-icon>
-    </mat-form-field>
+  <div fxLayout="row"
+       fxLayout.lt-md="column"
+       fxLayoutGap="16px"
+       fxLayoutGap.lt-md="0"> 
 
     <mat-form-field appearance="outline">
       <mat-label>Euros</mat-label>
-      <input matInput placeholder="Placeholder">
+
+      <input formControlName="euroInput"
+             type="number"
+             autocomplete="off"
+             matInput>
+      
       <mat-icon matSuffix>euro_symbol</mat-icon>
+
+      <mat-error *ngIf="exchangeForm.controls['euroInput'].hasError('pattern')" class="form-control-feedback">
+          Invalid currency
+      </mat-error>
+  
+      <mat-error *ngIf="exchangeForm.controls['euroInput'].hasError('required')" class="form-control-feedback">
+          This field is required
+      </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Dollars</mat-label>
+
+      <input formControlName="dollarInput"
+             type="number"
+             autocomplete="off"
+             matInput>
+
+      <mat-icon matSuffix>attach_money</mat-icon>
     </mat-form-field>
   </div>
 
-  <button mat-raised-button color="primary">CALCULATE</button>
+  <button type="submit"
+          color="primary"
+          mat-raised-button>CALCULATE</button>
 
 </form>

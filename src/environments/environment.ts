@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  backend: {
-    host: 'http://demo3682812.mockable.io',
-    secret: 'a4f1f550a48f1d25854a48e32ebaf512'
+  currencyExchange: {
+    api: 'http://data.fixer.io/api/latest',
+    access_key: '33b23d6e01efe285daf21f65e1124757'
   },
 };
 

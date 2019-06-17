@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
-import { AppInterceptor } from './http/http.interceptor';
 import { NotFoundComponent } from './layouts/not-found/not-found.component';
 
 @NgModule({
@@ -15,9 +14,7 @@ import { NotFoundComponent } from './layouts/not-found/not-found.component';
   declarations: [
     NotFoundComponent
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
-  ],
+  providers: [],
   exports: [
     NotFoundComponent
   ],

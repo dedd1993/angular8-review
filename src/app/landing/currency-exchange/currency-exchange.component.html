@@ -20,10 +20,6 @@
              matInput>
       
       <mat-icon matSuffix>euro_symbol</mat-icon>
-
-      <mat-error *ngIf="exchangeForm.controls['euroInput'].hasError('pattern')" class="form-control-feedback">
-          Invalid currency
-      </mat-error>
   
       <mat-error *ngIf="exchangeForm.controls['euroInput'].hasError('required')" class="form-control-feedback">
           This field is required
@@ -45,6 +41,10 @@
 
   <button type="submit"
           color="primary"
-          mat-raised-button>CALCULATE</button>
+          [disabled]="exchangeLoading"
+          mat-raised-button>
+    {{ exchangeLoading ? 'CALCULATING...' : 'CALCULATE' }}
+  </button>
+  
 
 </form>

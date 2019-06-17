@@ -1,21 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+
+import { CurrencyExchangeService } from './currency-exchange.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-currency-exchange',
   templateUrl: './currency-exchange.component.html',
   styleUrls: ['./currency-exchange.component.scss']
 })
-export class CurrencyExchangeComponent implements OnInit {
+export class CurrencyExchangeComponent implements OnDestroy {
   exchangeForm: FormGroup;
+  exchangeLoading = false;
+  private exchangeSuscription: Subscription;
 
-  constructor() { }
-
-  ngOnInit() {
-    this.setValuesFormBuilder();
+  constructor(private currencyExchangeService: CurrencyExchangeService) {
+    this.initFormBuilder();
   }
 
-  private setValuesFormBuilder() {
+  initFormBuilder() {
     this.exchangeForm = new FormGroup({
       euroInput: new FormControl({ value: '', disabled: false }, Validators.compose([
         Validators.required,
@@ -26,8 +29,26 @@ export class CurrencyExchangeComponent implements OnInit {
   }
 
   onCalculate(): void {
+    this.exchangeLoading = true;
     const amountToExchange = Number(this.exchangeForm.get('euroInput').value);
-    console.log('amountToExchange', amountToExchange);
+
+    this.exchangeSuscription = this.currencyExchangeService
+      .getEuroEquivalent(amountToExchange)
+      .subscribe(amount => {
+        this.exchangeForm.get('dollarInput').setValue(amount);
+
+      }, error => {
+        this.exchangeForm.get('dollarInput').reset();
+
+      }, () => {
+        this.exchangeLoading = false;
+      });
+  }
+
+  ngOnDestroy(): void {
+    if (this.exchangeSuscription) {
+      this.exchangeSuscription.unsubscribe();
+    }
   }
 
 }

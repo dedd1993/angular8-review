@@ -33,9 +33,10 @@ export class CurrencyExchangeComponent implements OnDestroy {
     const amountToExchange = Number(this.exchangeForm.get('euroInput').value);
 
     this.exchangeSuscription = this.currencyExchangeService
-      .getEuroEquivalent(amountToExchange)
+      .getDollarEquivalent(amountToExchange)
       .subscribe(amount => {
-        this.exchangeForm.get('dollarInput').setValue(amount);
+        const amountFixed = amount.toFixed(4);
+        this.exchangeForm.get('dollarInput').setValue(amountFixed);
 
       }, error => {
         this.exchangeForm.get('dollarInput').reset();

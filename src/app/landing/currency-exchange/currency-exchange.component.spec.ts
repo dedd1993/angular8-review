@@ -51,7 +51,7 @@ describe('CurrencyExchangeComponent', () => {
       expect(control.valid).toBeFalsy();
     });
 
-    it('should validate if euro control is a valid number', () => {
+    it('should validate that euro control is a valid number', () => {
       const control = component.exchangeForm.get('euroInput');
       control.setValue('345.6789');
       expect(control.valid).toBeTruthy();
@@ -65,7 +65,7 @@ describe('CurrencyExchangeComponent', () => {
   });
 
   describe('#onCalculate', () => {
-    it('should call the service with euro control value parameter to get the dollar value', () => {
+    it('should call the service with euro control value as a parameter to get the dollar value', () => {
       const spy = spyOn(currencyExchangeService, 'getDollarEquivalent').and.returnValue(EMPTY);
       const euroValue = component.exchangeForm.get('euroInput').value;
 
@@ -73,7 +73,7 @@ describe('CurrencyExchangeComponent', () => {
       expect(spy).toHaveBeenCalledWith(Number(euroValue));
     });
 
-    it('should change the dollar control if service response successfully', () => {
+    it('should change the dollar control value when service response successfully', () => {
       spyOn(currencyExchangeService, 'getDollarEquivalent').and.returnValue(of(1.120953));
       const previousValue = component.exchangeForm.get('dollarInput').value;
 
@@ -82,7 +82,7 @@ describe('CurrencyExchangeComponent', () => {
       expect(component.exchangeForm.get('dollarInput').value).not.toEqual(previousValue);
     });
 
-    it('should format the dollar value (0\'000,0000) if service response successfully', () => {
+    it('should format the dollar value (0\'000,0000) when service response successfully', () => {
       spyOn(currencyExchangeService, 'getDollarEquivalent').and.returnValue(of(1121.75559));
 
       component.onCalculate();

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
-
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from './material.module';
+import { RouterModule } from '@angular/router';
 
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [],
-  providers: [DecimalPipe],
+  providers: [ DecimalPipe ],
   imports: [
     CommonModule,
     MaterialModule
@@ -18,6 +18,7 @@ import { MaterialModule } from './material.module';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     MaterialModule
   ],
   entryComponents: []

@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap, flatMap } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 
 const MINUTES_FOR_CACHE = 10;
 

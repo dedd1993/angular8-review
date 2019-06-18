@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app.routing.module';
+import { CurrencyExchangeModule } from './currency-exchange/currency-exchange.module';
 import { CoreModule } from './core/core.module';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -13,6 +15,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     CoreModule,
+    CurrencyExchangeModule,
     AppRoutingModule,
     RouterModule.forRoot([])
   ],

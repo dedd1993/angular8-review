@@ -3,10 +3,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EMPTY, throwError, of } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { CurrencyExchangeComponent } from './currency-exchange.component';
 import { CurrencyExchangeService } from './currency-exchange.service';
-import { FakeCurrencyExchangeService } from '../../../testing/fakes.spec';
+import { FakeCurrencyExchangeService } from '../../testing/fakes.spec';
 
 describe('CurrencyExchangeComponent', () => {
   let component: CurrencyExchangeComponent;

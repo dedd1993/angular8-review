@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { NotFoundComponent } from './core/layouts/not-found/not-found.component';
 
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'currency-exchange', // wrapped in main.bundle.js, check currency-exchange module
+        redirectTo: 'currency-exchange', // wrapped in main.js, check currency-exchange module
         pathMatch: 'full'
     },
     {

@@ -29,7 +29,7 @@ export class CurrencyExchangeService {
     return of(euroAmount * this.euroToDollarExchangeValue);
   }
 
-  isRequestRequired(lastRequestDate, currentDate): boolean {
+  private isRequestRequired(lastRequestDate, currentDate): boolean {
     if ( lastRequestDate === undefined ) {
       return true;
     }
@@ -40,7 +40,7 @@ export class CurrencyExchangeService {
     return minutesOfLastRequest >= MINUTES_FOR_CACHE ? true : false;
   }
 
-  requestForExchangeRates(): Observable<any> {
+  private requestForExchangeRates(): Observable<any> {
     let params = new HttpParams();
     params = params.append('access_key', environment.currencyExchange.access_key);
 
